@@ -1,0 +1,119 @@
+@import "tailwindcss";
+
+:root {
+  color-scheme: dark;
+  --background: #171418;
+  --surface: #211c23;
+  --ink: #f7efe6;
+  --muted: #c1b1ba;
+  --line: #493b45;
+  --accent: #f3ac7a;
+}
+
+body {
+  background: var(--background);
+  color: var(--ink);
+  font-family: system-ui, sans-serif;
+  line-height: 1.6;
+  min-width: 280px;
+}
+
+.shell { max-width: 1192px; min-height: 100dvh; margin: 0 auto; padding: 0 clamp(20px, 5vw, 68px); }
+.site-header, .site-footer { padding: 22px 0; }
+.site-header { border-bottom: 1px solid var(--line); display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.site-footer { border-top: 1px solid var(--line); color: var(--muted); font-size: .82rem; }
+.brand { display: inline-flex; align-items: center; gap: 10px; font-size: .98rem; font-weight: 700; }
+.brand-mark {
+  display: grid; place-items: center; width: 34px; height: 34px; border-radius: 8px;
+  color: #2a1a1f; background: var(--accent);
+}
+.eyebrow { color: var(--accent); text-transform: uppercase; font-size: .72rem; font-weight: 700; letter-spacing: .16em; }
+.accent-dot { display: inline-block; width: 7px; height: 7px; margin-right: 5px; border-radius: 50%; background: currentColor; vertical-align: 1px; }
+
+h1, h2 { font-family: Georgia, serif; font-weight: 400; line-height: 1.1; overflow-wrap: anywhere; }
+h1 { font-size: clamp(2.25rem, 5vw, 4.8rem); letter-spacing: -.043em; }
+h2 { font-size: clamp(1.85rem, 4vw, 3.1rem); letter-spacing: -.03em; }
+.muted { color: var(--muted); }
+.error-note { color: #ffb7ad; font-size: .9rem; }
+
+.button {
+  display: inline-flex; justify-content: center; align-items: center; gap: 10px;
+  min-height: 42px; border: 1px solid transparent; border-radius: 8px; padding: 9px 15px;
+  font-size: .9rem; font-weight: 700; cursor: pointer;
+}
+.button:hover { filter: brightness(1.09); }
+.button:disabled { cursor: wait; opacity: .65; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+.button-primary { background: var(--accent); color: #281920; }
+.button-google { background: #f9f3eb; color: #211c23; min-height: 49px; }
+.button-quiet { background: var(--surface); border-color: var(--line); color: var(--ink); }
+
+.landing {
+  display: grid; grid-template-columns: 1.06fr 1fr; align-items: center; gap: clamp(28px, 6vw, 88px);
+  padding: clamp(50px, 9vw, 115px) 0;
+}
+.hero h1 { margin-top: 16px; }
+.hero h1 em { display: block; color: var(--accent); }
+.hero-description { margin: 21px 0 29px; max-width: 37ch; color: var(--muted); font-size: 1.05rem; }
+
+.poster {
+  isolation: isolate; position: relative; display: flex; flex-direction: column; justify-content: space-between;
+  min-height: 340px; aspect-ratio: 1.02; overflow: hidden; border: 1px solid #6e4d57; border-radius: 15px;
+  background: radial-gradient(ellipse at 48% 38%, #a75d50 0, #6f414d 37%, #362833 76%);
+}
+.poster::before {
+  content: ""; position: absolute; z-index: -1; inset: 0; opacity: .31;
+  background: repeating-linear-gradient(0deg, transparent 0 4px, #291c2c 5px 6px);
+}
+.poster-meta {
+  display: flex; justify-content: space-between; align-items: center; margin: 15px 18px; padding-bottom: 10px;
+  border-bottom: 1px solid #f4c5a875; font: 600 .64rem/1.4 ui-monospace, monospace; letter-spacing: .12em;
+  color: #fff0df;
+}
+.poster-bottom { padding: 10px 0 0; border-bottom: 0; border-top: 1px solid #f4c5a875; }
+.reel-scene { display: grid; place-items: center; position: absolute; z-index: -1; inset: 0; }
+.orbit { position: absolute; width: 82%; height: 40%; border: 1px solid #f4c5a87a; border-radius: 50%; }
+.orbit-wide { transform: rotate(-24deg); }
+.orbit-narrow { transform: rotate(24deg); }
+.reel {
+  position: relative; display: grid; place-items: center; width: 53%; aspect-ratio: 1; border-radius: 50%;
+  border: 2px solid #ffe3b8; background: linear-gradient(140deg, #ffd3a5, #df895c 72%, #af6155);
+  box-shadow: inset 0 0 0 7px #be7459, inset 0 0 0 8px #fcd09e, 10px 14px 0 #381f2cc2, 0 18px 26px #2f182d80;
+  transform: rotate(-15deg);
+}
+.reel > span { position: absolute; top: 15%; width: 25%; aspect-ratio: 1; border-radius: 50%; background: #38232e; border: 2px solid #ffcc96; transform-origin: center 141%; }
+.reel > span:nth-child(2) { transform: rotate(72deg); }
+.reel > span:nth-child(3) { transform: rotate(144deg); }
+.reel > span:nth-child(4) { transform: rotate(216deg); }
+.reel > span:nth-child(5) { transform: rotate(288deg); }
+.reel-hub { width: 10%; aspect-ratio: 1; border-radius: 50%; background: #482a34; border: 2px solid #ffd6a9; }
+
+.onboarding, .dashboard { padding: clamp(40px, 8vw, 96px) 0; }
+.onboarding { max-width: 620px; margin: auto; }
+.panel { border: 1px solid var(--line); border-radius: 16px; background: var(--surface); padding: clamp(24px, 4vw, 42px); }
+.panel h1, .panel h2 { margin-top: 10px; }
+.onboarding h1 { font-size: clamp(2.25rem, 5vw, 3.5rem); }
+.movie-form { display: grid; gap: 10px; margin-top: 24px; }
+.movie-form label { font-weight: 700; }
+.movie-form input {
+  display: block; width: 100%; border-radius: 8px; border: 1px solid #76626f; background: #18141a;
+  color: var(--ink); padding: 12px; font: inherit;
+}
+.movie-form button { justify-self: start; margin-top: 8px; }
+.profile { display: flex; gap: 16px; align-items: center; margin-bottom: 30px; }
+.profile h1 { font-size: clamp(2rem, 6vw, 4rem); margin: 4px 0; }
+.avatar {
+  position: relative; display: grid; place-items: center; flex: 0 0 56px; height: 56px;
+  border-radius: 50%; overflow: hidden; background: #55323f; color: #ffd2ab; font: 1.65rem Georgia, serif;
+}
+.avatar img { position: absolute; inset: 0; object-fit: cover; }
+.dashboard-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr); gap: 16px; align-items: stretch; }
+.movie-panel { background: radial-gradient(ellipse at 0 0, #543441, #2c212a 78%); }
+.movie-decoration { margin-top: 18px; font-size: 1.3rem; color: var(--accent); }
+.fact-text { margin: 16px 0; font-size: 1.1rem; overflow-wrap: anywhere; }
+
+@media (max-width: 700px) {
+  .landing, .dashboard-grid { grid-template-columns: 1fr; }
+  .poster { min-height: 245px; max-height: 360px; aspect-ratio: auto; }
+  .reel { width: min(50%, 170px); }
+}

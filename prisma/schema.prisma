@@ -1,0 +1,28 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+
+}
+
+model User {
+  id            String @id @default(cuid())
+  googleSubject String @unique
+  favoriteMovie String? @db.VarChar(120)
+  facts         Fact[]
+}
+
+model Fact {
+  id        Int      @id @default(autoincrement())
+  userId    String
+  movie     String   @db.VarChar(120)
+  text      String
+  createdAt DateTime @default(dbgenerated("clock_timestamp()")) @db.Timestamptz(3)
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, movie, createdAt(sort: Desc), id(sort: Desc)])
+}
+
